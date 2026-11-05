@@ -1,0 +1,92 @@
+- Sistema deve permitir Inserir, Retirar, Consultar e Localizar Docs;
+- Funcionário trabalha sempre com Doc do topo da pilha;
+- Programa em Python;
+
+------------------------------------
+
+Regras Código
+- Pilha com capacidade fixa de 5 Docs;
+- Estrutura deve ser criada com lista dimensionada: pilha = [None]*5
+- Controle de topo com variável inteira iniciada em -1
+- Deve ser dividido em funções
+- NÂO pode usar append() e pop() para operações da pilha
+- NÃO pode aumentar capacidade da pilha durante execução
+- NÂO pode encerrar por digitar opção inválida
+- DEVE impedir novos docs quando cheia e remoções de docs quando vazia
+
+------------------------------------
+
+Funcionalidades
+obs: As funcionalidades são listadas em número, pois quando o sistema inicia ele deve pedir que o usuário selecione uma das opções E, depois de feitas, deve regressar à perguntar até que o usuário use a opção 0 e encerre o programa!
+
+1. Inserir Doc (PUSH): solicitar código e descrição do doc -> doc é inserido na próxima posição disponível da pilha E topo deve ser atualizado -> Pilha cheia exibe: "ERRO: pilha cheia. Não é possível inserir outro documento."
+
+2. Retirar Doc (POP): retira doc do topo da pilha e apresenta seus dados -> atualiza o topo -> SE pilha vazia, exibir: "ERRO: pilha vazia. Não há documento para retirar."
+
+3. Consultar topo (PEEK): mostra código e descrição do doc no topo SEM REMOVER -> Consulta NÃO modifica pilha
+
+4. Exibir todos Docs: mostra docs do topo para base -> SE vazia, exibir: "Não há documentos armazenados."
+
+5. Pesquisar doc por código: Solicita um código e procura na pilha -> SE encontrar, mostra descrição e posição em que está -> SE NÃO encontrar, exibe: "Documento não existe na pilha." -> Pesquisa NÃO altera ordem ou número de DOCs na pilha
+
+6. Exibir estatísticas: Capacidade Máx; Docs armazenados; Posições livres; Ocupação (em %)
+
+0. Encerrar programa.
+
+------------------------------------
+
+Funções Obrigatórias no Código
+- inserir_documento() -> Inserir documento no topo
+- retirar_documento() -> Remover documento do topo
+- consultar_topo() -> Consultar sem remover
+- exibir_pilha() -> Mostrar os documentos
+- pesquisar_documento() -> Localizar por código
+- exibir_estatisticas() -> Calcular ocupação e posições livres
+- exibir_menu() -> Apresentar as opções
+obs: podemos criar outras, mas essas DEVEM estar no programa.
+
+------------------------------------
+
+Estrutura de Dados
+- Cada DOC poderá ser representado por um dicionário com o seguinte formato:
+
+documento = { 
+	"codigo": 101, 
+	"descricao": "Contrato de estagio"
+}
+
+- E a pilha deve ter uma estrutura baseada na abaixo, com operações e menu completo desenvolvido por nós:
+
+CAPACIDADE = 5
+pilha = [None] * CAPACIDADE
+topo = -1
+
+------------------------------------
+
+Testes Obrigatórios
+- Consultar topo com pilha vazia;
+- Retirar doc com pilha vazia;
+- Inserir doc e consultar topo;
+- Inserir 5 docs;
+- Inserir sexto doc;
+- Retirar doc e checar se o topo att;
+- Pesquisar Código existente E inexistente;
+- Exibir estatísticas de pilha parcialmente preenchida;
+- Esvaziar pilha e verificar se prog funciona ainda;
+- Digitar opção inválida no MENU;
+- REGISTRAR NUM DOCUMENTO os resultados esperados e os obtidos;
+
+Desafios Extras
+- Impedir código duplicado na pilha;
+- Exibir alerta quando pilha quase cheia;
+- Permitir limpar TODA pilha após confirmação do usuário;
+- Exibir quantidade de docs cuja descrição contenha uma palavra informada pelo usuário (pesquisa);
+- Recursos extra DEVEM respeitar as regras anteriores TODAS;
+
+------------------------------------
+
+Entrega 
+- Arquivo .py
+- Relatório explicando sobre controle do Topo
+- Tabela com testes e resultados
+- Prints demonstrando: Inserção, Remoção, Pesquisa, Estatísticas, Tratamento de Erros
