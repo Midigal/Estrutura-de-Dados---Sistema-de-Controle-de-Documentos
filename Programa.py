@@ -8,9 +8,16 @@ class Pilha:
         if self.topo + 1 >= self.capacidade:
             print("ERRO: pilha cheia. Não é possível inserir outro documento.")
             return
-
-        self.topo += 1
-        self.pilha[self.topo] = elemento
+        if self.topo == -1:
+            self.topo += 1
+            self.pilha[self.topo] = elemento
+        else:
+            for i in range(self.topo, -1, -1):
+                if self.pilha[i].get("codigo") == elemento.get("codigo"):
+                    print("ERRO: já existe esse código na pilha.")
+                    return
+            self.topo += 1
+            self.pilha[self.topo] = elemento
 
     def retirar_documento(self):
         if self.topo < 0:
@@ -40,12 +47,14 @@ class Pilha:
             print("ERRO: pilha vazia. Não há documentos armazenados.")
             return
 
+        quant_documento = 0
         for i in range(self.topo, -1, -1):
             if codigo == int(self.pilha[i].get('codigo')):
+                quant_documento += 1
                 print(f"[{self.pilha[i].get('codigo')}] {self.pilha[i].get('descricao')}")
-        return
 
-        print("ERRO: documento não encontrado. Este índice não existe na parte ocupada da pilha.")
+        if quant_documento == 0:
+            print("ERRO: documento não encontrado. Este índice não existe na parte ocupada da pilha.")
 
     def exibir_estatisticas(self):
         documentos_armazenados = self.topo + 1
@@ -58,10 +67,12 @@ def exibir_menu():
     while True:
         print("=== ESTRUTURA DE PILHA ===")
         print("0. Encerrar o programa\n1. Inserir documento\n2. Retirar documento\n3. Consultar documento do topo\n4. Exibir todos os documentos\n5. Pesquisar documento por código\n6. Exibir estatísticas")
-        try:
-            opcao = int(input("Insira uma opção: "))
-        except:
-            print("Valor inválido. Tente novamente.")
+        while True:
+            try:
+                opcao = int(input("Insira uma opção: "))
+                break
+            except ValueError:
+                print("Valor inválido. Tente novamente.")
         match opcao:
             case 0:
                 break
