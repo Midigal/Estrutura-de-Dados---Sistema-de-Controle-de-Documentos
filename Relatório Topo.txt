@@ -1,0 +1,9 @@
+O topo inicia valendo -1, assim as posições de índice no programa ficam condizentes quando o primeiro documento tem posição 0 no topo e no índice. A pilha, quando com 4 documentos, não registra novas entradas, e quando vazia não registra novas saídas.
+
+Assim, o programa, quando se tenta adicionar um novo documento, verifica a quantidade de elementos na pilha e, então, compara entre seus elementos se há um mesmo código entre as tuplas na lista self.pilha.
+
+Para retirar a lista, no ponto de indexação baseada no topo atual, atribui as tuplas ao valor None, assim retornando a serem espaços vazios e removendo um marcador da self.topo. O processo de limpar é feito por meio do list.clear() e re-atribuição do self.topo para -1.
+
+A ação de consulta imprime a tupla que ocupa o topo da lista, e as ferramentas de pesquisas usam o for in range para ir lendo do topo atual até o espaço inicial, parando no valor de inicialização -1.
+
+Observação: fizemos uso da biblioteca time apenas para melhorar um pouco o acompanhar das ações do programa.
